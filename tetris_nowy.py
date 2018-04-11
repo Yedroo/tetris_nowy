@@ -46,7 +46,7 @@ while True:
 
     DISPLAY_SURFACE.blit((square), (square_prost.x, square_prost.y))
 
-# sutrzymywanie okna
+# utrzymywanie okna
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
