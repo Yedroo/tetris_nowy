@@ -39,8 +39,13 @@ tetris_shapes = [
 width = 1000
 height = 1500
 squarex = width/2
+squarey = 0
 
 pygame.init()
+
+FPS = 30
+fpsClock = pygame.time.Clock()
+
 DISPLAY_SURFACE = pygame.display.set_mode((width, height))
 pygame.display.set_caption('kiedyś będzie Tetris')
 
@@ -49,15 +54,33 @@ WHITE = (255, 255, 255)
 GREEN = (0, 187, 0)
 GRAY = (225, 225, 225)
 
-DISPLAY_SURFACE.fill(GRAY)
+#DISPLAY_SURFACE.fill(GRAY)
 #pygame.draw.line(DISPLAY_SURFACE, BLACK, (60, 60), (120, 60), 4)
 #pygame.draw.line(DISPLAY_SURFACE, WHITE, (60, 70), (120, 70), 4)
 #pygame.draw.circle(DISPLAY_SURFACE, WHITE, (300, 50), 20, 0)
-pygame.draw.rect(DISPLAY_SURFACE, GREEN, (squarex-125, 0, 250, 250))
+#pygame.draw.rect(DISPLAY_SURFACE, GREEN, (squarex-50, 0, 100, 100))
+
+#while squarey < height:     #automatic square drop
+
+dir = 'down'
 
 while True:
+
+    DISPLAY_SURFACE.fill(GRAY)
+    pygame.draw.rect(DISPLAY_SURFACE, GREEN, (squarex-50, 0, 100, 100))
+    if dir =='down':
+        squarey +=20
+        if squarey >= 1500:
+            dir = 'up'
+    elif dir == 'up':
+        squarey -= 20
+        if squarey <= 0:
+            dir = 'down'
+
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+
     pygame.display.update()
+    fpsClock
