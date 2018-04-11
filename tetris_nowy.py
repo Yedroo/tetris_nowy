@@ -67,7 +67,11 @@ dir = 'down'
 while True:
 
     DISPLAY_SURFACE.fill(GRAY)
-    pygame.draw.rect(DISPLAY_SURFACE, GREEN, (squarex-50, 0, 100, 100))
+    #square = pygame.draw.rect(DISPLAY_SURFACE, GREEN, (squarex-50, 0, 100, 100))
+    square_width = 100
+    square_height = 100
+    square = pygame.Surface([square_width, square_height])
+    square.fill = (WHITE)
     if dir =='down':
         squarey +=20
         if squarey >= 1500:
@@ -83,4 +87,4 @@ while True:
             sys.exit()
 
     pygame.display.update()
-    fpsClock
+    fpsClock(FPS)
