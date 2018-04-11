@@ -66,19 +66,24 @@ dir = 'down'
 
 while True:
 
-    DISPLAY_SURFACE.fill(GRAY)
+   DISPLAY_SURFACE.fill(GRAY)
     #square = pygame.draw.rect(DISPLAY_SURFACE, GREEN, (squarex-50, 0, 100, 100))
     square_width = 100
     square_height = 100
+    square_pos = (screen_width/2, 0)
     square = pygame.Surface([square_width, square_height])
-    square.fill = (WHITE)
+    square.fill(BLACK)
+    square_prost = square.get_rect()
+    square_prost.x = square_pos[0]
+    square_prost.y = square_pos[1]
+
     if dir =='down':
-        squarey +=20
-        if squarey >= 1500:
+        square_pos[1] +=20
+        if square_pos[1] >= 1500:
             dir = 'up'
     elif dir == 'up':
-        squarey -= 20
-        if squarey <= 0:
+        square_pos[1] -= 20
+        if square_pos[1] <= 0:
             dir = 'down'
 
     for event in pygame.event.get():
@@ -87,4 +92,4 @@ while True:
             sys.exit()
 
     pygame.display.update()
-    fpsClock(FPS)
+    fpsClock.tick(FPS)
