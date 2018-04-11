@@ -69,7 +69,7 @@ dir = 'down'
 #square = pygame.draw.rect(DISPLAY_SURFACE, GREEN, (squarex-50, 0, 100, 100))
 square_width = 100
 square_height = 100
-square_pos = (screen_width/2, 0)
+square_pos = ((screen_width - square_width)/2, 0)
 square = pygame.Surface([square_width, square_height])
 square.fill(BLACK)
 square_prost = square.get_rect()
@@ -83,7 +83,7 @@ while True:
 
     if dir =='down':
         square_prost.y +=20
-        if square_prost.y >= 500:
+        if square_prost.y >= screen_height-square_height:
             dir = 'up'
    # elif dir == 'up':
    #    square_prost.y -= 20
