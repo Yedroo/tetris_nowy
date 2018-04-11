@@ -92,10 +92,20 @@ while True:
     DISPLAY_SURFACE.blit((square), (square_prost.x, square_prost.y))
 
 
-    for event in pygame.event.get():
+   for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_LEFT:
+            square_prost.x -= 5
+            if square_prost.x< 0:
+                square_prost.x = 0
+        if event.key == pygame.K_RIGHT:
+            square_prost.x += 5
+            if square_prost.x> screen_width - square_width:
+                square_prost.x = screen_width - square_width
 
     pygame.display.update()
     fpsClock.tick(FPS)
