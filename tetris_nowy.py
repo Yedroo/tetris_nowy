@@ -1,9 +1,45 @@
 import pygame, sys
 from pygame.locals import *
 
+colors = [
+(0,   0,   0  ),
+(255, 85,  85),
+(100, 200, 115),
+(120, 108, 245),
+(255, 140, 50 ),
+(50,  120, 52 ),
+(146, 202, 73 ),
+(150, 161, 218 ),
+(35,  35,  35) # Helper color for background grid
+]
+
+# Define the shapes of the single parts
+tetris_shapes = [
+	[[1, 1, 1],
+	 [0, 1, 0]],
+
+	[[0, 2, 2],
+	 [2, 2, 0]],
+
+	[[3, 3, 0],
+	 [0, 3, 3]],
+
+	[[4, 0, 0],
+	 [4, 4, 4]],
+
+	[[0, 0, 5],
+	 [5, 5, 5]],
+
+	[[6, 6, 6, 6]],
+
+	[[7, 7],
+	 [7, 7]]
+]
+
+
 pygame.init()
 DISPLAY_SURFACE = pygame.display.set_mode((500, 500))
-pygame.display.set_caption('Hello World!')
+pygame.display.set_caption('kiedyś będzie Tetris')
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
