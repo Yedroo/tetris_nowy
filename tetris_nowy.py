@@ -36,9 +36,11 @@ tetris_shapes = [
 	 [7, 7]]
 ]
 
+width = 1000
+height = 1500
 
 pygame.init()
-DISPLAY_SURFACE = pygame.display.set_mode((500, 500))
+DISPLAY_SURFACE = pygame.display.set_mode((width, height))
 pygame.display.set_caption('kiedyś będzie Tetris')
 
 BLACK = (0, 0, 0)
