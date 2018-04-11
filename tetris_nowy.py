@@ -64,18 +64,22 @@ GRAY = (225, 225, 225)
 
 dir = 'down'
 
-while True:
 
+
+#square = pygame.draw.rect(DISPLAY_SURFACE, GREEN, (squarex-50, 0, 100, 100))
+square_width = 100
+square_height = 100
+square_pos = (screen_width/2, 0)
+square = pygame.Surface([square_width, square_height])
+square.fill(BLACK)
+square_prost = square.get_rect()
+square_prost.x = square_pos[0]
+square_prost.y = square_pos[1]
+DISPLAY_SURFACE.blit(square, square_pos)
+
+while True:
     DISPLAY_SURFACE.fill(GRAY)
-    #square = pygame.draw.rect(DISPLAY_SURFACE, GREEN, (squarex-50, 0, 100, 100))
-    square_width = 100
-    square_height = 100
-    square_pos = (screen_width/2, 0)
-    square = pygame.Surface([square_width, square_height])
-    square.fill(BLACK)
-    square_prost = square.get_rect()
-    square_prost.x = square_pos[0]
-    square_prost.y = square_pos[1]
+
 
     if dir =='down':
         square_prost.y +=20
@@ -85,6 +89,8 @@ while True:
         square_prost.y -= 20
         if square_prost.y <= 0:
             dir = 'down'
+    DISPLAY_SURFACE.blit((square), (square_prost.x, square_prost.y))
+
 
     for event in pygame.event.get():
         if event.type == QUIT:
