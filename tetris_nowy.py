@@ -36,8 +36,8 @@ tetris_shapes = [
 	 [7, 7]]
 ]
 
-screen_width = 1000     #szerokość okna
-screen_height = 1500    #wysokość okna
+screen_width = 800     #szerokość okna
+screen_height = 600    #wysokość okna
 squarex = screen_width/2
 squarey = 0
 
@@ -83,12 +83,12 @@ while True:
 
     if dir =='down':
         square_prost.y +=20
-        if square_prost.y >= 1500:
+        if square_prost.y >= 500:
             dir = 'up'
-    elif dir == 'up':
-        square_prost.y -= 20
-        if square_prost.y <= 0:
-            dir = 'down'
+   # elif dir == 'up':
+   #    square_prost.y -= 20
+   #     if square_prost.y <= 0:
+   #         dir = 'down'
     DISPLAY_SURFACE.blit((square), (square_prost.x, square_prost.y))
 
 
