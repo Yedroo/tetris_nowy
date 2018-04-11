@@ -38,6 +38,7 @@ tetris_shapes = [
 
 width = 1000
 height = 1500
+squarex = width/2
 
 pygame.init()
 DISPLAY_SURFACE = pygame.display.set_mode((width, height))
@@ -52,7 +53,7 @@ DISPLAY_SURFACE.fill(GRAY)
 #pygame.draw.line(DISPLAY_SURFACE, BLACK, (60, 60), (120, 60), 4)
 #pygame.draw.line(DISPLAY_SURFACE, WHITE, (60, 70), (120, 70), 4)
 #pygame.draw.circle(DISPLAY_SURFACE, WHITE, (300, 50), 20, 0)
-pygame.draw.rect(DISPLAY_SURFACE, GREEN, (int(len(width))/2, 0, 250, 250))
+pygame.draw.rect(DISPLAY_SURFACE, GREEN, (squarex-125, 0, 250, 250))
 
 while True:
     for event in pygame.event.get():
