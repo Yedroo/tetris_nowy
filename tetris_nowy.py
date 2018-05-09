@@ -53,15 +53,16 @@ while True:
             sys.exit()
 
 # sterowanie przez użytkownika
-    if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_LEFT:
-            square_prost.x -= 5
-            if square_prost.x< 0:
-                square_prost.x = 0
-        if event.key == pygame.K_RIGHT:
-            square_prost.x += 5
-            if square_prost.x> screen_width - square_width:
-                square_prost.x = screen_width - square_width
+    if dir =='down':
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                square_prost.x -= 5
+                if square_prost.x< 0:
+                    square_prost.x = 0
+            if event.key == pygame.K_RIGHT:
+                square_prost.x += 5
+                if square_prost.x> screen_width - square_width:
+                    square_prost.x = screen_width - square_width
 
-    pygame.display.update()
+        pygame.display.update()
     fpsClock.tick(FPS)
