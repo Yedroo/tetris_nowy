@@ -28,8 +28,8 @@ LIGHTBLUE   = ( 20,  20, 175)
 YELLOW      = (155, 155,   0)
 LIGHTYELLOW = (175, 175,  20)
 
-BORDERCOLOR = BLUE
-BGCOLOR = BLACK
+BORDERCOLOR = GREEN
+BGCOLOR = GRAY
 TEXTCOLOR = WHITE
 TEXTSHADOWCOLOR = GRAY
 COLORS      = (     BLUE,      GREEN,      RED,      YELLOW)
@@ -93,21 +93,6 @@ J_TEMPLATE = [['.....',
 O_TEMPLATE = [['.....',
                '..OO.',
                '..OO.',
-               '.....',
-               '.....'],
-              ['.....',
-               '.....',
-               '..OO.',
-               '..OO.',
-               '.....'],
-              ['.....',
-               '.....',
-               '.OO..',
-               '.OO..',
-               '.....'],
-              ['.....',
-               '.OO..',
-               '.OO..',
                '.....',
                '.....']]
 T_TEMPLATE = [['.....',
@@ -185,7 +170,8 @@ def runGame():
     movingLeft = False
     movingRight = False
     score = 0
-    level, fallFreq = calculateLevelAndFallFreq(score)
+    fallFreq = 0.25
+    #level, fallFreq = calculateLevelAndFallFreq(score)
 
     fallingPiece = getNewPiece()
     nextPiece = getNewPiece()
@@ -278,8 +264,8 @@ def runGame():
             if not isValidPosition(board, fallingPiece, adjY=1):
                 # falling piece has landed, set it on the board
                 addToBoard(board, fallingPiece)
-                score += removeCompleteLines(board)
-                level, fallFreq = calculateLevelAndFallFreq(score)
+                removeCompleteLines(board)
+                #level, fallFreq = calculateLevelAndFallFreq(score)
                 fallingPiece = None
             else:
                 # piece did not land, just move the piece down
@@ -352,12 +338,12 @@ def checkForQuit():
         pygame.event.post(event) # put the other KEYUP event objects back
 
 
-def calculateLevelAndFallFreq(score):
+#def calculateLevelAndFallFreq(score):
     # Based on the score, return the level the player is on and
     # how many seconds pass until a falling piece falls one space.
-    level = int(score / 10) + 1
-    fallFreq = 0.27 - (level * 0.02)
-    return level, fallFreq
+#    level = int(score / 10) + 1
+#    fallFreq = 0.27 - (level * 0.02)
+#    return level, fallFreq
 
 def getNewPiece():
     # return a random new piece in a random rotation and color
@@ -464,20 +450,6 @@ def drawBoard(board):
             drawBox(x, y, board[x][y])
 
 
-def drawStatus(score, level):
-    # draw the score text
-    scoreSurf = BASICFONT.render('Score: %s' % score, True, TEXTCOLOR)
-    scoreRect = scoreSurf.get_rect()
-    scoreRect.topleft = (WINDOWWIDTH - 150, 20)
-    DISPLAYSURF.blit(scoreSurf, scoreRect)
-
-    # draw the level text
-    levelSurf = BASICFONT.render('Level: %s' % level, True, TEXTCOLOR)
-    levelRect = levelSurf.get_rect()
-    levelRect.topleft = (WINDOWWIDTH - 150, 50)
-    DISPLAYSURF.blit(levelSurf, levelRect)
-
-
 def drawPiece(piece, pixelx=None, pixely=None):
     shapeToDraw = PIECES[piece['shape']][piece['rotation']]
     if pixelx == None and pixely == None:
@@ -495,11 +467,12 @@ def drawNextPiece(piece):
     # draw the "next" text
     nextSurf = BASICFONT.render('Next:', True, TEXTCOLOR)
     nextRect = nextSurf.get_rect()
-    nextRect.topleft = (WINDOWWIDTH - 120, 80)
+    nextRect.topleft = (WINDOWWIDTH - 100, 80)
     DISPLAYSURF.blit(nextSurf, nextRect)
     # draw the "next" piece
-    drawPiece(piece, pixelx=WINDOWWIDTH-120, pixely=100)
+    drawPiece(piece, pixelx=WINDOWWIDTH-100, pixely=100)
 
 
 if __name__ == '__main__':
     main()
+
