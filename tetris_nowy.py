@@ -29,7 +29,7 @@ YELLOW      = (155, 155,   0)
 LIGHTYELLOW = (175, 175,  20)
 
 BORDERCOLOR = GREEN
-BGCOLOR = GRAY
+BGCOLOR = BLACK
 TEXTCOLOR = WHITE
 TEXTSHADOWCOLOR = GRAY
 COLORS      = (     BLUE,      GREEN,      RED,      YELLOW)
@@ -152,9 +152,9 @@ def main():
     DISPLAYSURF = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
     BIGFONT = pygame.font.Font('freesansbold.ttf', 100)
-    pygame.display.set_caption('Pentomino')
+    pygame.display.set_caption('Tetris')
 
-    showTextScreen('Pentomino')
+    showTextScreen('Tetris')
     while True: # game loop
         runGame()
         showTextScreen('Game Over')
@@ -169,9 +169,8 @@ def runGame():
     movingDown = False # note: there is no movingUp variable
     movingLeft = False
     movingRight = False
-    score = 0
     fallFreq = 0.25
-    #level, fallFreq = calculateLevelAndFallFreq(score)
+
 
     fallingPiece = getNewPiece()
     nextPiece = getNewPiece()
@@ -275,7 +274,6 @@ def runGame():
         # drawing everything on the screen
         DISPLAYSURF.fill(BGCOLOR)
         drawBoard(board)
-        #drawStatus(score, level)
         drawNextPiece(nextPiece)
         if fallingPiece != None:
             drawPiece(fallingPiece)
@@ -475,4 +473,3 @@ def drawNextPiece(piece):
 
 if __name__ == '__main__':
     main()
-
